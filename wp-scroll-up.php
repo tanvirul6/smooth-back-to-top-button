@@ -34,6 +34,12 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 
 
 		/**
+		 * The single instance of the class.
+		 */
+		protected static $instance = null;
+
+
+		/**
 		 * Constructor for the class
 		 *
 		 * Sets up all the appropriate hooks and actions
@@ -66,15 +72,15 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 		 * @since 1.0.0
 		 *
 		 */
-		public static function init() {
+		public static function instance() {
 
-			static $instance = false;
+			if ( null === self::$instance ) {
 
-			if ( ! $instance ) {
-				$instance = new self();
+				self::$instance = new self();
+
 			}
 
-			return $instance;
+			return self::$instance;
 
 		}
 
@@ -110,7 +116,8 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 			require WPST_INCLUDES . '/functions.php';
 
 			if ( is_admin() ) {
-				require WPST_ADMIN . '/admin.php';
+				require_once WPST_ADMIN . '/class-settings-api.php';
+				require_once WPST_ADMIN . '/class-settings.php';
 			}
 
 
@@ -127,8 +134,11 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 		private function init_hooks() {
 
 			add_action( 'init', array( $this, 'localization_setup' ) );
+			add_action( 'wp_head', array( $this, 'internal_styles' ) );
 			add_action( 'wp_head', array( $this, 'add_markup' ) );
+			add_action( 'wp_footer', array( $this, 'internal_scripts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_settings_links' ) );
 
 		}
@@ -157,21 +167,10 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 		 */
 		function plugin_settings_links( $links ) {
 
-			$links[] = '<a href="' . admin_url( 'admin.php?page=' ) . '">' . __( 'Settings', 'wpst' ) . '</a>';
+			$links[] = '<a href="' . admin_url( 'admin.php?page=' ) . 'wp-scroll-top">' . __( 'Settings', 'wpst' ) . '</a>';
 
 			return $links;
 
-		}
-
-
-		function add_markup() {
-			?>
-            <div class="progress-wrap">
-                <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-                    <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
-                </svg>
-            </div>
-			<?php
 		}
 
 
@@ -181,6 +180,34 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 			wp_enqueue_script( 'wpst-script', WPST_ASSETS . '/js/wp-scroll-top.js', array( 'jquery' ), '1.0.0', true );
 		}
 
+
+		public function internal_styles() {
+			?>
+			<style type="text/css">
+				background: red;
+			</style>
+			<?php
+		}
+
+
+		public function internal_scripts() {
+			?>
+			<script type="text/javascript">
+				alert('Hi');
+			</script>
+			<?php
+		}
+
+
+		public function add_markup() {
+			?>
+            <div class="progress-wrap">
+                <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+                    <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                </svg>
+            </div>
+			<?php
+		}
 
 	}
 }
@@ -192,7 +219,7 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
  * @return object
  */
 function wpx_scroll_top() {
-	return WP_Scroll_Top::init();
+	return WP_Scroll_Top::instance();
 }
 
 // Kick Off

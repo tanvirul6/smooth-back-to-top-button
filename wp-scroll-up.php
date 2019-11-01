@@ -176,7 +176,7 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 
 
 		function enqueue_scripts() {
-			wp_enqueue_style( 'unicons-font', '//s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css', array(), '1.0.0' );
+			wp_enqueue_style( 'wpst-fonts', WPST_ASSETS . '/css/fonts.css', array(), '1.0.0' );
 			wp_enqueue_style( 'wpst-style', WPST_ASSETS . '/css/wp-scroll-top.css', array(), '1.0.0' );
 			wp_enqueue_script( 'wpst-script', WPST_ASSETS . '/js/wp-scroll-top.js', array( 'jquery' ), '1.0.0', true );
 		}

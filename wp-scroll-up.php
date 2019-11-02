@@ -101,6 +101,7 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 			define( 'WPST_INCLUDES', WPST_DIR_PATH . 'inc' );
 			define( 'WPST_ADMIN', WPST_DIR_PATH . 'admin' );
 			define( 'WPST_ASSETS', WPST_DIR_URI . 'assets' );
+
 		}
 
 
@@ -113,13 +114,12 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 		 */
 		private function includes() {
 
-			require WPST_INCLUDES . '/functions.php';
+			require_once WPST_INCLUDES . '/functions.php';
 
 			if ( is_admin() ) {
 				require_once WPST_ADMIN . '/class-settings-api.php';
 				require_once WPST_ADMIN . '/class-settings.php';
 			}
-
 
 		}
 
@@ -139,7 +139,7 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 			add_action( 'wp_footer', array( $this, 'internal_scripts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-			
+
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_settings_links' ) );
 
 		}
@@ -177,38 +177,139 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 
 		function enqueue_scripts() {
 
-			wp_register_style( 'wpst-fonts', WPST_ASSETS . '/css/fonts.css', array(), '1.0.0' );
-			wp_register_style( 'wpst-style', WPST_ASSETS . '/css/wp-scroll-top.css', array(), '1.0.0' );
-			wp_register_script( 'wpst-script', WPST_ASSETS . '/js/wp-scroll-top.js', array( 'jquery' ), '1.0.0', true );
-			
+			wp_register_style( 'wpst-fonts', WPST_ASSETS . '/css/fonts.css', array(), WPST_VERSION );
+			wp_register_style( 'wpst-style', WPST_ASSETS . '/css/wp-scroll-top.css', array(), WPST_VERSION );
+			wp_register_script( 'wpst-script', WPST_ASSETS . '/js/wp-scroll-top.js', array( 'jquery' ), WPST_VERSION, true );
+
 			wp_enqueue_style( 'wpst-fonts' );
 			wp_enqueue_style( 'wpst-style' );
 			wp_enqueue_script( 'wpst-script' );
+
+		}
+
+
+		/**
+		 * Get Settings Function
+		 *
+		 * @param $key
+		 * @param bool $default
+		 * @param string $section
+		 *
+		 * @return bool
+		 */
+		public static function get_settings( $key, $default = false, $section = 'wpst_settings' ) {
+
+			$settings = get_option( $section, [] );
+
+			return isset( $settings[ $key ] ) ? $settings[ $key ] : $default;
+
 		}
 
 
 		public function internal_styles() {
+			$is_enable       = self::get_settings( 'is_enable' );
+			$icon_type       = self::get_settings( 'icon_type' );
+			$button_position = absint( self::get_settings( 'button_position' ) );
+			$button_margin   = absint( self::get_settings( 'button_margin' ) );
+			$button_duration = absint( self::get_settings( 'button_duration' ) );
+			$button_size     = absint( self::get_settings( 'button_size' ) );
+			$icon_size       = absint( self::get_settings( 'icon_size' ) );
+			$progress_size   = absint( self::get_settings( 'progress_size' ) );
+			$button_color    = esc_attr( self::get_settings( 'button_color' ) );
+			$icon_color      = esc_attr( self::get_settings( 'icon_color' ) );
+			$progress_color  = esc_attr( self::get_settings( 'progress_color' ) );
+
+			switch ( $icon_type ) {
+				case 'arrow-up-bold' :
+					$icon = '\e911';
+					break;
+				case 'angle-double-up-black' :
+					$icon = '\e908';
+					break;
+				case 'angle-up' :
+					$icon = '\e90c';
+					break;
+				case 'angle-double-up' :
+					$icon = '\e90a';
+					break;
+				case 'finger-up' :
+					$icon = '\e904';
+					break;
+				case 'finger-up-o' :
+					$icon = '\e905';
+					break;
+				default:
+					$icon = '\e900';
+			}
+
 			?>
-			<style type="text/css">
-				background: red;
-			</style>
+            <style type="text/css">
+                .progress-wrap {
+                    right: 50px;
+                    bottom: 50px;
+                    height: <?php echo $button_size; ?>px;
+                    width: <?php echo $button_size; ?>px;
+                    border-radius: <?php echo $button_size; ?>px;
+                    box-shadow: inset 0 0 0 <?php echo $progress_size / 2; ?>px<?php echo $button_color; ?>;
+                    -webkit-transition: all 200ms linear;
+                    transition: all 200ms linear;
+                }
+
+                .progress-wrap::after {
+                    width: <?php echo $button_size; ?>px;
+                    height: <?php echo $button_size; ?>px;
+                    color: <?php echo $icon_color; ?>;
+                    font-size: <?php echo $icon_size; ?>px;
+                    content: '<?php echo $icon; ?>';
+                    line-height: <?php echo $button_size; ?>px;
+                    -webkit-transition: all 200ms linear;
+                    transition: all 200ms linear;
+                }
+
+                .progress-wrap svg.progress-circle path {
+                    stroke: <?php echo $progress_color; ?>;
+                    stroke-width: <?php echo $progress_size; ?>px;
+                    -webkit-transition: all 200ms linear;
+                    transition: all 200ms linear;
+                }
+
+            </style>
 			<?php
 		}
 
 
 		public function internal_scripts() {
+			$button_offset   = absint( self::get_settings( 'button_offset' ) );
+			$scroll_duration = absint( self::get_settings( 'scroll_duration' ) );
 			?>
-			<script type="text/javascript">
-				alert('Hi');
-			</script>
+            <script type="text/javascript">
+                var offset = <?php echo $button_offset; ?>;
+                var duration = <?php echo $scroll_duration; ?>;
+
+                jQuery(window).on('scroll', function () {
+                    if (jQuery(this).scrollTop() > offset) {
+                        jQuery('.progress-wrap').addClass('active-progress');
+                    } else {
+                        jQuery('.progress-wrap').removeClass('active-progress');
+                    }
+                });
+
+                jQuery('.progress-wrap').on('click', function (e) {
+                    e.preventDefault();
+                    jQuery('html, body').animate({scrollTop: 0}, duration);
+                    return false;
+                })
+            </script>
 			<?php
 		}
 
 
 		public function add_markup() {
+			$size     = absint( self::get_settings( 'progress_size' ) );
+			$view_box = '-' . $size / 2 . ' -' . $size / 2 . ' ' . ( 100 + $size ) . ' ' . ( 100 + $size );
 			?>
             <div class="progress-wrap">
-                <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+                <svg class="progress-circle" width="100%" height="100%" viewBox="<?php echo $view_box; ?>">
                     <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
                 </svg>
             </div>

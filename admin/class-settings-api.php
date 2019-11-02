@@ -516,7 +516,7 @@ if ( ! class_exists( 'Settings_API' ) ):
                             do_action( 'wsa_form_bottom_' . $form['id'], $form );
                             if ( isset( $this->settings_fields[ $form['id'] ] ) ):
                                 ?>
-                                <div style="padding-left: 10px">
+                                <div>
                                     <?php submit_button(); ?>
                                 </div>
                             <?php endif; ?>
@@ -704,9 +704,7 @@ if ( ! class_exists( 'Settings_API' ) ):
                     padding-bottom: 16px;
                     margin: 8px 0 16px;
                     font-size: 18px;
-                    font-weight: 300;
                     border-bottom: 1px solid #cccccc;
-
                 }
 
                 .wpst-settings-heading{

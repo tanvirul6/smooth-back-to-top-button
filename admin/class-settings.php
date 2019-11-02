@@ -23,14 +23,14 @@ if ( !class_exists('WPST_Settings' ) ):
         }
 
         function admin_menu() {
-            add_options_page( 'Scroll To Top Settings', 'Scroll To Top', 'manage_options', 'scroll-to-top', array($this, 'plugin_page') );
+            add_options_page( 'Scroll To Top Settings', 'Scroll To Top', 'manage_options', 'wp-back-to-top', array($this, 'plugin_page') );
         }
 
         function get_settings_sections() {
             $sections = array(
                 array(
-                    'id'    => 'wpst_general',
-                    'title' => __( 'Sctoll To Top Settings', 'wpst' )
+                    'id'    => 'wpst_settings',
+                    'title' => __( 'Scroll To Top Settings', 'wpst' )
                 )
             );
             return $sections;
@@ -43,129 +43,134 @@ if ( !class_exists('WPST_Settings' ) ):
          */
         function get_settings_fields() {
             $settings_fields = array(
-                'wpst_general' => array(
+                'wpst_settings' => array(
                     array(
                         'name'  => 'is_enable',
-                        'label' => __( 'Enable?', 'wpst' ),
-                        'type'  => 'checkbox'
+                        'label' => esc_html__( 'Enable?', 'wpst' ),
+                        'desc'        => __( 'Enable scroll top?', 'wpst' ),
+                        'type'  => 'checkbox',
+                        'default'  => 'on'
                     ),
+
+                    array(
+                        'name'    => 'icon_type',
+                        'label'   => __( 'Icon Type', 'wpst' ),
+                        'type'    => 'radio',
+                        'default' => 'arrow-up-light',
+                        'options' => array(
+                            'arrow-up-light'   => '<i class="icon-arrow-up-light"></i>',
+                            'arrow-up-bold'   => '<i class="icon-arrow-up-bold"></i>',
+                            'angle-double-up-black'   => '<i class="icon-arrow-up-black"></i>',
+                            'angle-up'   => '<i class="icon-angle-up"></i>',
+                            'angle-double-up'   => '<i class="icon-angle-double-up"></i>',
+                            'finger-up'   => '<i class="icon-finger-up"></i>',
+                            'finger-up-o'   => '<i class="icon-finger-up-o"></i>',
+                        )
+                    ),
+
+                    array(
+                        'name' => 'button_position',
+                        'label' => esc_html__( 'Button Position', 'wpst' ),
+                        'type' => 'select',
+                        'options' => array(
+                            'left-side' => esc_html__( 'Bottom Left Side', 'wpst' ),
+                            'right-side' => esc_html__( 'Bottom Right Side', 'wpst'),
+                        ),
+                        'default' => 'right-side',
+                    ),
+
+                    array(
+                        'name'              => 'button_margin',
+                        'label'             => __( 'Button Margin', 'wpst' ),
+                        'desc'              => __( 'in px', 'wpst' ),
+                        'step'              => '1',
+                        'type'              => 'number',
+                        'default'           => '50'
+                    ),
+
+                    array(
+                        'name'              => 'button_offset',
+                        'label'             => __( 'Button Offset', 'wpst' ),
+                        'desc'              => __( 'in px', 'wpst' ),
+                        'step'              => '1',
+                        'type'              => 'number',
+                        'default'           => '50'
+                    ),
+
+                    array(
+                        'name'              => 'scroll_duration',
+                        'label'             => __( 'Scroll Duration', 'wpst' ),
+                        'desc'              => __( 'in ms', 'wpst' ),
+                        'min'               => 100,
+                        'max'               => 1000,
+                        'step'              => '100',
+                        'type'              => 'number',
+                        'default'           => '500'
+                    ),
+
+                    array(
+                        'name'              => 'button_duration',
+                        'label'             => __( 'Button Fade Duration', 'wpst' ),
+                        'desc'              => __( 'in ms', 'wpst' ),
+                        'min'               => 100,
+                        'max'               => 1000,
+                        'step'              => '100',
+                        'type'              => 'number',
+                        'default'           => '200'
+                    ),
+
+                    array(
+                        'name'              => 'button_size',
+                        'label'             => __( 'Button Size', 'wpst' ),
+                        'desc'              => __( 'in px', 'wpst' ),
+                        'step'              => '1',
+                        'type'              => 'number',
+                        'default'           => '46'
+                    ),
+
+                    array(
+                        'name'              => 'icon_size',
+                        'label'             => __( 'Icon Size', 'wpst' ),
+                        'desc'              => __( 'in px', 'wpst' ),
+                        'step'              => '1',
+                        'type'              => 'number',
+                        'default'           => '24'
+                    ),
+
+                    array(
+                        'name'              => 'progress_size',
+                        'label'             => __( 'Progress Size', 'wpst' ),
+                        'desc'              => __( 'in px', 'wpst' ),
+                        'step'              => '1',
+                        'min'               => 1,
+                        'max'               => 10,
+                        'type'              => 'number',
+                        'default'           => '4'
+                    ),
+
+                    array(
+                        'name'    => 'button_color',
+                        'label'   => __( 'Button Color', 'wpst' ),
+                        'type'    => 'color',
+                        'default' => '#1f2029'
+                    ),
+
+                    array(
+                        'name'    => 'icon_color',
+                        'label'   => __( 'Icon Color', 'wpst' ),
+                        'type'    => 'color',
+                        'default' => '#1f2029'
+                    ),
+
+                    array(
+                        'name'    => 'progress_color',
+                        'label'   => __( 'Progress Color', 'wpst' ),
+                        'type'    => 'color',
+                        'default' => '#cccccc'
+                    ),
+
                 ),
 
-                'wpst_basics' => array(
-                    array(
-                        'name'              => 'text_val',
-                        'label'             => __( 'Text Input', 'wpst' ),
-                        'desc'              => __( 'Text input description', 'wpst' ),
-                        'placeholder'       => __( 'Text Input placeholder', 'wpst' ),
-                        'type'              => 'text',
-                        'default'           => 'Title',
-                        'sanitize_callback' => 'sanitize_text_field'
-                    ),
-                    array(
-                        'name'              => 'number_input',
-                        'label'             => __( 'Number Input', 'wpst' ),
-                        'desc'              => __( 'Number field with validation callback `floatval`', 'wpst' ),
-                        'placeholder'       => __( '1.99', 'wpst' ),
-                        'min'               => 0,
-                        'max'               => 100,
-                        'step'              => '0.01',
-                        'type'              => 'number',
-                        'default'           => 'Title',
-                        'sanitize_callback' => 'floatval'
-                    ),
-                    array(
-                        'name'        => 'textarea',
-                        'label'       => __( 'Textarea Input', 'wpst' ),
-                        'desc'        => __( 'Textarea description', 'wpst' ),
-                        'placeholder' => __( 'Textarea placeholder', 'wpst' ),
-                        'type'        => 'textarea'
-                    ),
-                    array(
-                        'name'        => 'html',
-                        'desc'        => __( 'HTML area description. You can use any <strong>bold</strong> or other HTML elements.', 'wpst' ),
-                        'type'        => 'html'
-                    ),
-                    array(
-                        'name'  => 'checkbox',
-                        'label' => __( 'Checkbox', 'wpst' ),
-                        'desc'  => __( 'Checkbox Label', 'wpst' ),
-                        'type'  => 'checkbox'
-                    ),
-                    array(
-                        'name'    => 'radio',
-                        'label'   => __( 'Radio Button', 'wpst' ),
-                        'desc'    => __( 'A radio button', 'wpst' ),
-                        'type'    => 'radio',
-                        'options' => array(
-                            'yes' => 'Yes',
-                            'no'  => 'No'
-                        )
-                    ),
-                    array(
-                        'name'    => 'selectbox',
-                        'label'   => __( 'A Dropdown', 'wpst' ),
-                        'desc'    => __( 'Dropdown description', 'wpst' ),
-                        'type'    => 'select',
-                        'default' => 'no',
-                        'options' => array(
-                            'yes' => 'Yes',
-                            'no'  => 'No'
-                        )
-                    ),
-                    array(
-                        'name'    => 'password',
-                        'label'   => __( 'Password', 'wpst' ),
-                        'desc'    => __( 'Password description', 'wpst' ),
-                        'type'    => 'password',
-                        'default' => ''
-                    ),
-                    array(
-                        'name'    => 'file',
-                        'label'   => __( 'File', 'wpst' ),
-                        'desc'    => __( 'File description', 'wpst' ),
-                        'type'    => 'file',
-                        'default' => '',
-                        'options' => array(
-                            'button_label' => 'Choose Image'
-                        )
-                    )
-                ),
-                'wpst_advanced' => array(
-                    array(
-                        'name'    => 'color',
-                        'label'   => __( 'Color', 'wpst' ),
-                        'desc'    => __( 'Color description', 'wpst' ),
-                        'type'    => 'color',
-                        'default' => ''
-                    ),
-                    array(
-                        'name'    => 'password',
-                        'label'   => __( 'Password', 'wpst' ),
-                        'desc'    => __( 'Password description', 'wpst' ),
-                        'type'    => 'password',
-                        'default' => ''
-                    ),
-                    array(
-                        'name'    => 'wysiwyg',
-                        'label'   => __( 'Advanced Editor', 'wpst' ),
-                        'desc'    => __( 'WP_Editor description', 'wpst' ),
-                        'type'    => 'wysiwyg',
-                        'default' => ''
-                    ),
-                    array(
-                        'name'    => 'multicheck',
-                        'label'   => __( 'Multile checkbox', 'wpst' ),
-                        'desc'    => __( 'Multi checkbox description', 'wpst' ),
-                        'type'    => 'multicheck',
-                        'default' => array('one' => 'one', 'four' => 'four'),
-                        'options' => array(
-                            'one'   => 'One',
-                            'two'   => 'Two',
-                            'three' => 'Three',
-                            'four'  => 'Four'
-                        )
-                    ),
-                )
             );
 
             return $settings_fields;

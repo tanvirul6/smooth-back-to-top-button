@@ -138,7 +138,8 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 			add_action( 'wp_head', array( $this, 'add_markup' ) );
 			add_action( 'wp_footer', array( $this, 'internal_scripts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_settings_links' ) );
 
 		}
@@ -167,7 +168,7 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 		 */
 		function plugin_settings_links( $links ) {
 
-			$links[] = '<a href="' . admin_url( 'admin.php?page=' ) . 'wp-scroll-top">' . __( 'Settings', 'wpst' ) . '</a>';
+			$links[] = '<a href="' . admin_url( 'admin.php?page=' ) . 'wp-back-to-top">' . __( 'Settings', 'wpst' ) . '</a>';
 
 			return $links;
 
@@ -175,9 +176,14 @@ if ( ! class_exists( 'WP_Scroll_Top' ) ) {
 
 
 		function enqueue_scripts() {
-			wp_enqueue_style( 'wpst-fonts', WPST_ASSETS . '/css/fonts.css', array(), '1.0.0' );
-			wp_enqueue_style( 'wpst-style', WPST_ASSETS . '/css/wp-scroll-top.css', array(), '1.0.0' );
-			wp_enqueue_script( 'wpst-script', WPST_ASSETS . '/js/wp-scroll-top.js', array( 'jquery' ), '1.0.0', true );
+
+			wp_register_style( 'wpst-fonts', WPST_ASSETS . '/css/fonts.css', array(), '1.0.0' );
+			wp_register_style( 'wpst-style', WPST_ASSETS . '/css/wp-scroll-top.css', array(), '1.0.0' );
+			wp_register_script( 'wpst-script', WPST_ASSETS . '/js/wp-scroll-top.js', array( 'jquery' ), '1.0.0', true );
+			
+			wp_enqueue_style( 'wpst-fonts' );
+			wp_enqueue_style( 'wpst-style' );
+			wp_enqueue_script( 'wpst-script' );
 		}
 
 

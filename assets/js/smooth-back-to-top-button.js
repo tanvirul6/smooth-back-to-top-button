@@ -3,7 +3,7 @@
 
     jQuery(document).ready(function ($) {
 
-        //Scroll back to top
+        // Scroll progress indicator
         var progressPath = document.querySelector('.progress-wrap path');
         var pathLength = progressPath.getTotalLength();
         progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
@@ -11,31 +11,18 @@
         progressPath.style.strokeDashoffset = pathLength;
         progressPath.getBoundingClientRect();
         progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+
         var updateProgress = function () {
             var scroll = $(window).scrollTop();
             var height = $(document).height() - $(window).height();
             var progress = pathLength - (scroll * pathLength / height);
             progressPath.style.strokeDashoffset = progress;
-        }
+        };
+
         updateProgress();
+
         $(window).scroll(updateProgress);
 
-        var offset = 50;
-        var duration = 550;
-
-        $(window).on('scroll', function () {
-            if (jQuery(this).scrollTop() > offset) {
-                jQuery('.progress-wrap').addClass('active-progress');
-            } else {
-                jQuery('.progress-wrap').removeClass('active-progress');
-            }
-        });
-
-        $('.progress-wrap').on('click', function (e) {
-            e.preventDefault();
-            jQuery('html, body').animate({scrollTop: 0}, duration);
-            return false;
-        })
     });
 
 })(jQuery);

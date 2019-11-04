@@ -112,7 +112,8 @@ if ( ! class_exists( 'Settings_API' ) ):
          * registers them to WordPress and ready for use.
          */
         function admin_init() {
-            //register settings sections
+
+            // Register settings sections
             foreach ( $this->settings_sections as $section ) {
                 if ( false == get_option( $section['id'] ) ) {
                     add_option( $section['id'] );
@@ -127,7 +128,8 @@ if ( ! class_exists( 'Settings_API' ) ):
                 }
                 add_settings_section( $section['id'], $section['title'], $callback, $section['id'] );
             }
-            //register settings fields
+
+            // Register settings fields
             foreach ( $this->settings_fields as $section => $field ) {
                 foreach ( $field as $option ) {
                     $name     = $option['name'];
@@ -157,7 +159,8 @@ if ( ! class_exists( 'Settings_API' ) ):
                     add_settings_field( "{$section}[{$name}]", $label, $callback, $section, $section, $args );
                 }
             }
-            // creates our settings in the options table
+
+            // Creates our settings in the options table
             foreach ( $this->settings_sections as $section ) {
                 register_setting( $section['id'], $section['id'], array( $this, 'sanitize_options' ) );
             }
@@ -232,7 +235,7 @@ if ( ! class_exists( 'Settings_API' ) ):
          */
         function callback_heading( $args ) {
             $value       = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
-            $html        = sprintf( '<h2 class="wpst-settings-heading">%1$s</h2>', $value);
+            $html        = sprintf( '<h2 class="sbttb-settings-heading">%1$s</h2>', $value);
             $html        .= $this->get_field_description( $args );
             echo $html;
         }
@@ -484,7 +487,7 @@ if ( ! class_exists( 'Settings_API' ) ):
          * Shows all the settings section labels as tab
          */
         function show_navigation() {
-            $html  = '<div class="wpst-settings-sidebar"><ul>';
+            $html  = '<div class="sbttb-settings-sidebar"><ul>';
             $count = count( $this->settings_sections );
             // don't show the navigation if only one section exists
             if ( $count === 1 ) {
@@ -505,7 +508,7 @@ if ( ! class_exists( 'Settings_API' ) ):
         function show_forms() {
             $this->_style_fix();
             ?>
-            <div class="wpst-settings-content">
+            <div class="sbttb-settings-content">
                 <?php foreach ( $this->settings_sections as $form ) { ?>
                     <div id="<?php echo $form['id']; ?>" class="group" style="display: none;">
                         <form method="post" action="options.php">
@@ -529,7 +532,7 @@ if ( ! class_exists( 'Settings_API' ) ):
         }
 
         function show_settings(){
-            echo '<div class="wpst-settings d-flex">';
+            echo '<div class="sbttb-settings d-flex">';
             $this->show_navigation();
             $this->show_forms();
             echo '</div>';
@@ -579,11 +582,11 @@ if ( ! class_exists( 'Settings_API' ) ):
                         $(activetab + '-tab').closest('li').addClass('active');
                     }
                     else {
-                        $('.wpst-settings-sidebar  li:first').addClass('active');
+                        $('.sbttb-settings-sidebar  li:first').addClass('active');
                     }
 
-                    $('.wpst-settings-sidebar li a').click(function (evt) {
-                        $('.wpst-settings-sidebar li').removeClass('active');
+                    $('.sbttb-settings-sidebar li a').click(function (evt) {
+                        $('.sbttb-settings-sidebar li').removeClass('active');
                         $(this).closest('li').addClass('active').blur();
 
                         var clicked_group = $(this).attr('href');
@@ -629,20 +632,20 @@ if ( ! class_exists( 'Settings_API' ) ):
                 }
 
                 <?php endif; ?>
-                .wpst-settings *, .wpst-settings *::before, .wpst-settings *::after {
+                .sbttb-settings *, .sbttb-settings *::before, .sbttb-settings *::after {
                     box-sizing: border-box;
                 }
 
-                .wpst-settings {
+                .sbttb-settings {
                     margin: 16px 0;
                 }
 
-                .wpst-settings.d-flex {
+                .sbttb-settings.d-flex {
                     display: -ms-flexbox !important;
                     display: flex !important;
                 }
 
-                .wpst-settings-sidebar {
+                .sbttb-settings-sidebar {
                     position: relative;
                     z-index: 1;
                     min-width: 185px;
@@ -651,21 +654,21 @@ if ( ! class_exists( 'Settings_API' ) ):
                     border-left: 1px solid #cccccc;
                 }
 
-                .wpst-settings-sidebar > ul {
+                .sbttb-settings-sidebar > ul {
                     margin: 0;
                     /*overflow: hidden;*/
                 }
 
-                .wpst-settings-sidebar > ul > li {
+                .sbttb-settings-sidebar > ul > li {
                     margin: 0;
                     /*overflow: hidden;*/
                 }
 
-                .wpst-settings-sidebar > ul > li:first-child a {
+                .sbttb-settings-sidebar > ul > li:first-child a {
                     border-top-color: #cccccc;
                 }
 
-                .wpst-settings-sidebar > ul > li a {
+                .sbttb-settings-sidebar > ul > li a {
                     display: block;
                     padding: 0 20px;
                     margin: 0 -1px 0 0;
@@ -685,13 +688,13 @@ if ( ! class_exists( 'Settings_API' ) ):
                     box-shadow: none !important;
                 }
 
-                .wpst-settings-sidebar > ul > li.active a {
+                .sbttb-settings-sidebar > ul > li.active a {
                     color: #23282d;
                     background-color: #fff;
                     border-right: 1px solid #fff !important;
                 }
 
-                .wpst-settings-content {
+                .sbttb-settings-content {
                     position: relative;
                     max-width: 100%;
                     padding: 10px 20px;
@@ -700,14 +703,14 @@ if ( ! class_exists( 'Settings_API' ) ):
                     min-height: 500px;
                 }
 
-                .wpst-settings-content h2 {
+                .sbttb-settings-content h2 {
                     padding-bottom: 16px;
                     margin: 8px 0 16px;
                     font-size: 18px;
                     border-bottom: 1px solid #cccccc;
                 }
 
-                .wpst-settings-heading{
+                .sbttb-settings-heading{
                     position: relative;
                     left: -17%;
                 }

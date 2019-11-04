@@ -1,0 +1,140 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Smooth Back To Top Button\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-04 17:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.1; wp-5.2.4"
+
+#: admin/class-settings.php:41
+msgid "Back To Top Button Settings"
+msgstr ""
+
+#: admin/class-settings.php:93
+msgid "Bottom Left Side"
+msgstr ""
+
+#: admin/class-settings.php:94
+msgid "Bottom Right Side"
+msgstr ""
+
+#: admin/class-settings.php:170
+msgid "Button Background Color"
+msgstr ""
+
+#: admin/class-settings.php:177
+msgid "Button Border Color"
+msgstr ""
+
+#: admin/class-settings.php:139
+msgid "Button Border Size"
+msgstr ""
+
+#: admin/class-settings.php:198
+msgid "Button Hover Color"
+msgstr ""
+
+#: admin/class-settings.php:101
+msgid "Button Margin"
+msgstr ""
+
+#: admin/class-settings.php:110
+msgid "Button Offset"
+msgstr ""
+
+#: admin/class-settings.php:90
+msgid "Button Position"
+msgstr ""
+
+#: admin/class-settings.php:130
+msgid "Button Size"
+msgstr ""
+
+#: admin/class-settings.php:111
+msgid "Distance from top in pixels before showing the button."
+msgstr ""
+
+#: admin/class-settings.php:59
+msgid "Enable back to top button?"
+msgstr ""
+
+#: admin/class-settings.php:58
+msgid "Enable Button"
+msgstr ""
+
+#: admin/class-settings.php:66
+msgid "Enable Scroll Progress"
+msgstr ""
+
+#: admin/class-settings.php:67
+msgid "Enable scroll progress indicator?"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://shovondesign.com/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/smooth-back-to-top-button/"
+msgstr ""
+
+#: admin/class-settings.php:184
+msgid "Icon Color"
+msgstr ""
+
+#: admin/class-settings.php:150
+msgid "Icon Size"
+msgstr ""
+
+#: admin/class-settings.php:74
+msgid "Icon Type"
+msgstr ""
+
+#: admin/class-settings.php:120
+msgid "in milliseconds."
+msgstr ""
+
+#: admin/class-settings.php:102 admin/class-settings.php:131
+#: admin/class-settings.php:140 admin/class-settings.php:151
+#: admin/class-settings.php:160
+msgid "in pixels."
+msgstr ""
+
+#: admin/class-settings.php:191
+msgid "Progress Color"
+msgstr ""
+
+#: admin/class-settings.php:159
+msgid "Progress Size"
+msgstr ""
+
+#: admin/class-settings.php:119
+msgid "Scroll Duration"
+msgstr ""
+
+#: smooth-back-to-top-button.php:167
+msgid "Settings"
+msgstr ""
+
+#. Name of the plugin
+msgid "Smooth Back To Top Button"
+msgstr ""
+
+#. Author of the plugin
+msgid "Tanvirul Haque"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"The best WordPress smooth back to top button plugin with scroll progress "
+"indicator."
+msgstr ""

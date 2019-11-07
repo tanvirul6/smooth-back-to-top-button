@@ -114,8 +114,8 @@ if ( ! class_exists( 'Smooth_Back_To_Top_Button' ) ) {
 		private function includes() {
 
 			if ( is_admin() ) {
-				require_once SBTTB_ADMIN . '/class-settings_api.php';
-				require_once SBTTB_ADMIN . '/class-settings.php';
+				require_once SBTTB_ADMIN . '/class-sbttb_settings_api.php';
+				require_once SBTTB_ADMIN . '/class-sbttb_settings.php';
 			}
 
 		}

@@ -1,13 +1,13 @@
 <?php
 
-if ( ! class_exists( 'Settings' ) ):
-    class Settings {
+if ( ! class_exists( 'SBTTB_Settings' ) ):
+    class SBTTB_Settings {
 
         private $settings_api;
 
         function __construct() {
 
-            $this->settings_api = new Settings_API();
+            $this->settings_api = new SBTTB_Settings_API();
 
             add_action( 'admin_init', array( $this, 'admin_init' ) );
             add_action( 'admin_menu', array( $this, 'admin_menu' ) );
@@ -236,4 +236,4 @@ if ( ! class_exists( 'Settings' ) ):
     }
 endif;
 
-new Settings();
+new sbttb_settings();

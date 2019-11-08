@@ -2,8 +2,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if ( ! class_exists( 'Settings_API' ) ):
-    class Settings_API {
+if ( ! class_exists( 'SBTTB_Settings_API' ) ):
+    class SBTTB_Settings_API {
         /**
          * settings sections array
          *

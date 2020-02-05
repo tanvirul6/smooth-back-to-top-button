@@ -236,6 +236,8 @@ if ( ! class_exists( 'Smooth_Back_To_Top_Button' ) ) {
 			$icon_color     = esc_attr( self::get_settings( 'icon_color', '#1f2029' ) );
 			$progress_color = esc_attr( self::get_settings( 'progress_color', '#1f2029' ) );
 			$hover_color    = esc_attr( self::get_settings( 'hover_color', '#1f2029' ) );
+			$is_hide_mobile = self::get_settings( 'hide_on_mobile', 'off' );
+			$is_hide_tablet = self::get_settings( 'hide_on_tablet', 'off' );
 
 			switch ( $icon_type ) {
 				case 'arrow-up-bold' :
@@ -296,6 +298,23 @@ if ( ! class_exists( 'Smooth_Back_To_Top_Button' ) ) {
                     stroke: <?php echo $progress_color; ?>;
                     stroke-width: <?php echo $progress_size; ?>px;
                 }
+
+                <?php if ( $is_hide_tablet == 'on' ) { ?>
+                @media only screen and (min-width: 768px) and (max-width: 991px) {
+                    .progress-wrap {
+                        display: none;
+                    }
+                }
+                <?php } ?>
+
+                <?php if ( $is_hide_mobile == 'on' ) { ?>
+                @media only screen and (max-width: 767px) {
+                    .progress-wrap {
+                        display: none;
+                    }
+                }
+                <?php } ?>
+
             </style>
 
 			<?php

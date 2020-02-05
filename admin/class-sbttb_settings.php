@@ -200,6 +200,22 @@ if ( ! class_exists( 'SBTTB_Settings' ) ):
                         'default' => '#1f2029'
                     ),
 
+	                array(
+		                'name'    => 'hide_on_mobile',
+		                'label'   => esc_html__( 'Hide on Mobile Layout', 'smooth-back-to-top-button' ),
+		                'desc'    => esc_html__( 'Maximum width is 767px.', 'smooth-back-to-top-button' ),
+		                'type'    => 'checkbox',
+		                'default' => 'off'
+	                ),
+
+	                array(
+		                'name'    => 'hide_on_tablet',
+		                'label'   => esc_html__( 'Hide on Tablet Layout', 'smooth-back-to-top-button' ),
+		                'desc'    => esc_html__( 'Minimum width is 768px and maximum width is 991px.', 'smooth-back-to-top-button' ),
+		                'type'    => 'checkbox',
+		                'default' => 'off'
+	                ),
+
                 ),
 
             );

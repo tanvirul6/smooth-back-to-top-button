@@ -216,6 +216,12 @@ if ( ! class_exists( 'SBTTB_Settings' ) ):
 		                'default' => 'off'
 	                ),
 
+	                array(
+		                'name'    => 'sbttb_custom_css',
+		                'label'   => esc_html__( 'Custom CSS', 'smooth-back-to-top-button' ),
+		                'type'    => 'textarea',
+	                ),
+
                 ),
 
             );

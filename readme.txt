@@ -3,7 +3,7 @@ Contributors: tanvirul
 Donate link:
 Tags: scroll to top, back to top, scroll top, scroll up, wordpress scroll top, scroll back to top, scroll progress indicator, back to top button
 Requires at least: 4.1
-Tested up to: 5.3
+Tested up to: 5.5.1
 Stable tag: trunk
 Requires PHP: 5.4
 License: GPLv2 or later

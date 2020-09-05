@@ -4,8 +4,8 @@ Plugin Name: Smooth Back To Top Button
 Plugin URI: https://wordpress.org/plugins/smooth-back-to-top-button/
 Description: The best WordPress smooth back to top button plugin with scroll progress indicator.
 Author: Tanvirul Haque
-Author URI: http://shovondesign.com/
-Version: 1.0.1
+Author URI: http://wpxpress.net/
+Version: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 Text Domain: smooth-back-to-top-button
@@ -30,7 +30,7 @@ if ( ! class_exists( 'Smooth_Back_To_Top_Button' ) ) {
 		 * @since 1.0.0
 		 * @var  string
 		 */
-		public $version = '1.0.1';
+		public $version = '1.0.2';
 
 
 		/**
@@ -339,18 +339,20 @@ if ( ! class_exists( 'Smooth_Back_To_Top_Button' ) ) {
                 var offset = <?php echo $button_offset; ?>;
                 var duration = <?php echo $scroll_duration; ?>;
 
-                jQuery(window).on('scroll', function () {
-                    if (jQuery(this).scrollTop() > offset) {
-                        jQuery('.progress-wrap').addClass('active-progress');
-                    } else {
-                        jQuery('.progress-wrap').removeClass('active-progress');
-                    }
-                });
+                jQuery(window).on('load', function () {
+                	jQuery(window).on('scroll', function () {
+	                    if (jQuery(this).scrollTop() > offset) {
+	                        jQuery('.progress-wrap').addClass('active-progress');
+	                    } else {
+	                        jQuery('.progress-wrap').removeClass('active-progress');
+	                    }
+	                });
 
-                jQuery('.progress-wrap').on('click', function (e) {
-                    e.preventDefault();
-                    jQuery('html, body').animate({scrollTop: 0}, duration);
-                    return false;
+	                jQuery('.progress-wrap').on('click', function (e) {
+	                    e.preventDefault();
+	                    jQuery('html, body').animate({scrollTop: 0}, duration);
+	                    return false;
+	                })
                 })
             </script>
 

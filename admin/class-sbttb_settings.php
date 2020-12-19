@@ -70,6 +70,14 @@ if ( ! class_exists( 'SBTTB_Settings' ) ):
                     ),
 
                     array(
+                        'name'    => 'is_enable_async',
+                        'label'   => esc_html__( 'JavaScript Async', 'smooth-back-to-top-button' ),
+                        'desc'    => esc_html__( 'To increase site performance, keep it enabled, if there has no conflicts.', 'smooth-back-to-top-button' ),
+                        'type'    => 'checkbox',
+                        'default' => 'off'
+                    ),
+
+                    array(
                         'name'    => 'icon_type',
                         'label'   => esc_html__( 'Icon Type', 'smooth-back-to-top-button' ),
                         'type'    => 'radio',

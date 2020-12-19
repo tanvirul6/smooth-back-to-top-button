@@ -5,7 +5,7 @@ Plugin URI: https://wordpress.org/plugins/smooth-back-to-top-button/
 Description: The best WordPress smooth back to top button plugin with scroll progress indicator.
 Author: Tanvirul Haque
 Author URI: http://wpxpress.net/
-Version: 1.0.3
+Version: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 Text Domain: smooth-back-to-top-button
@@ -30,7 +30,7 @@ if ( ! class_exists( 'Smooth_Back_To_Top_Button' ) ) {
 		 * @since 1.0.0
 		 * @var  string
 		 */
-		public $version = '1.0.3';
+		public $version = '1.0.4';
 
 
 		/**
@@ -66,7 +66,7 @@ if ( ! class_exists( 'Smooth_Back_To_Top_Button' ) ) {
 		 * Initializes the class
 		 *
 		 * Checks for an existing instance
-		 * and if it does't find one, creates it.
+		 * and if it doesn't find one, creates it.
 		 *
 		 * @return object Class instance
 		 * @since 1.0.0
@@ -325,7 +325,7 @@ if ( ! class_exists( 'Smooth_Back_To_Top_Button' ) ) {
 
 
 		/**
-		 * Add Internal Javascript
+		 * Add Internal JavaScript
 		 */
 		public function internal_scripts() {
 			$is_enable_btn = self::get_settings( 'is_enable_btn', 'on' );
@@ -336,9 +336,11 @@ if ( ! class_exists( 'Smooth_Back_To_Top_Button' ) ) {
 
 			$button_offset   = absint( self::get_settings( 'button_offset', '50' ) );
 			$scroll_duration = absint( self::get_settings( 'scroll_duration', '500' ) );
+			$is_enable_async = self::get_settings( 'is_enable_async', 'off' );
+			$js_async		 = ( 'on' == $is_enable_async ) ? ' async="async" defer="defer"' : '' ;
 			?>
 
-            <script type="text/javascript">
+            <script type="text/javascript"<?php echo $js_async; ?>>
                 var offset = <?php echo $button_offset; ?>;
                 var duration = <?php echo $scroll_duration; ?>;
 

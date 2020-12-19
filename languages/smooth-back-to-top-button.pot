@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smooth Back To Top Button\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-22 05:59+0000\n"
+"POT-Creation-Date: 2020-12-19 07:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,22 +13,67 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.3.1; wp-5.3.2"
-
-#: smooth-back-to-top-button.php:167
-msgid "Settings"
-msgstr ""
+"X-Loco-Version: 2.5.0; wp-5.6\n"
+"X-Domain: smooth-back-to-top-button"
 
 #: admin/class-sbttb_settings.php:41
 msgid "Back To Top Button Settings"
 msgstr ""
 
-#: admin/class-sbttb_settings.php:58
-msgid "Enable Button"
+#: admin/class-sbttb_settings.php:101
+msgid "Bottom Left Side"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:102
+msgid "Bottom Right Side"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:178
+msgid "Button Background Color"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:185
+msgid "Button Border Color"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:147
+msgid "Button Border Size"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:206
+msgid "Button Hover Color"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:109
+msgid "Button Margin"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:118
+msgid "Button Offset"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:98
+msgid "Button Position"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:138
+msgid "Button Size"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:229
+msgid "Custom CSS"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:119
+msgid "Distance from top in pixels before showing the button."
 msgstr ""
 
 #: admin/class-sbttb_settings.php:59
 msgid "Enable back to top button?"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:58
+msgid "Enable Button"
 msgstr ""
 
 #: admin/class-sbttb_settings.php:66
@@ -39,106 +84,78 @@ msgstr ""
 msgid "Enable scroll progress indicator?"
 msgstr ""
 
-#: admin/class-sbttb_settings.php:74
-msgid "Icon Type"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:90
-msgid "Button Position"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:93
-msgid "Bottom Left Side"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:94
-msgid "Bottom Right Side"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:101
-msgid "Button Margin"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:102 admin/class-sbttb_settings.php:131
-#: admin/class-sbttb_settings.php:140 admin/class-sbttb_settings.php:151
-#: admin/class-sbttb_settings.php:160
-msgid "in pixels."
-msgstr ""
-
-#: admin/class-sbttb_settings.php:110
-msgid "Button Offset"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:111
-msgid "Distance from top in pixels before showing the button."
-msgstr ""
-
-#: admin/class-sbttb_settings.php:119
-msgid "Scroll Duration"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:120
-msgid "in milliseconds."
-msgstr ""
-
-#: admin/class-sbttb_settings.php:130
-msgid "Button Size"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:139
-msgid "Button Border Size"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:150
-msgid "Icon Size"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:159
-msgid "Progress Size"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:170
-msgid "Button Background Color"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:177
-msgid "Button Border Color"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:184
-msgid "Icon Color"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:191
-msgid "Progress Color"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:198
-msgid "Button Hover Color"
-msgstr ""
-
-#: admin/class-sbttb_settings.php:205
+#: admin/class-sbttb_settings.php:213
 msgid "Hide on Mobile Layout"
 msgstr ""
 
-#: admin/class-sbttb_settings.php:206
-msgid "Maximum width is 767px."
-msgstr ""
-
-#: admin/class-sbttb_settings.php:213
+#: admin/class-sbttb_settings.php:221
 msgid "Hide on Tablet Layout"
 msgstr ""
 
+#. Author URI of the plugin
+msgid "http://wpxpress.net/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/smooth-back-to-top-button/"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:192
+msgid "Icon Color"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:158
+msgid "Icon Size"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:82
+msgid "Icon Type"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:128
+msgid "in milliseconds."
+msgstr ""
+
+#: admin/class-sbttb_settings.php:110 admin/class-sbttb_settings.php:139
+#: admin/class-sbttb_settings.php:148 admin/class-sbttb_settings.php:159
+#: admin/class-sbttb_settings.php:168
+msgid "in pixels."
+msgstr ""
+
+#: admin/class-sbttb_settings.php:74
+msgid "JavaScript Async"
+msgstr ""
+
 #: admin/class-sbttb_settings.php:214
+msgid "Maximum width is 767px."
+msgstr ""
+
+#: admin/class-sbttb_settings.php:222
 msgid "Minimum width is 768px and maximum width is 991px."
 msgstr ""
 
-#: admin/class-sbttb_settings.php:221
-msgid "Custom CSS"
+#: admin/class-sbttb_settings.php:199
+msgid "Progress Color"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:167
+msgid "Progress Size"
+msgstr ""
+
+#: admin/class-sbttb_settings.php:127
+msgid "Scroll Duration"
+msgstr ""
+
+#: smooth-back-to-top-button.php:167
+msgid "Settings"
 msgstr ""
 
 #. Name of the plugin
 msgid "Smooth Back To Top Button"
+msgstr ""
+
+#. Author of the plugin
+msgid "Tanvirul Haque"
 msgstr ""
 
 #. Description of the plugin
@@ -147,14 +164,7 @@ msgid ""
 "indicator."
 msgstr ""
 
-#. URI of the plugin
-msgid "https://wordpress.org/plugins/smooth-back-to-top-button/"
-msgstr ""
-
-#. Author of the plugin
-msgid "Tanvirul Haque"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "http://shovondesign.com/"
+#: admin/class-sbttb_settings.php:75
+msgid ""
+"To increase site performance, keep it enabled, if there has no conflicts."
 msgstr ""

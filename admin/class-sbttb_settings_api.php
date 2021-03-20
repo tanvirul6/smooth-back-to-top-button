@@ -104,7 +104,7 @@ if ( ! class_exists( 'SBTTB_Settings_API' ) ):
         }
 
         /**
-         * Initialize and registers the settings sections and fileds to WordPress
+         * Initialize and registers the settings sections and fields to WordPress
          *
          * Usually this should be called at `admin_init` hook.
          *
@@ -202,7 +202,7 @@ if ( ! class_exists( 'SBTTB_Settings_API' ) ):
         }
 
         /**
-         * Displays a url field for a settings field
+         * Displays a URL field for a settings field
          *
          * @param array $args settings field args
          */

@@ -177,7 +177,7 @@ if ( ! class_exists( 'SBTTB_Settings' ) ):
                         'name'    => 'button_color',
                         'label'   => esc_html__( 'Button Background Color', 'smooth-back-to-top-button' ),
                         'type'    => 'color',
-                        'default' => '#0000'
+                        'default' => '#ffffff'
                     ),
 
                     array(

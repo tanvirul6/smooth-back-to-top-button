@@ -1,8 +1,8 @@
 <?php
 
-// Don't call the file directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+// If uninstall not called from WordPress exit
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+    die;
 }
 
 // Delete plugin all settings.
